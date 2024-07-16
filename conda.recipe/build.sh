@@ -9,17 +9,15 @@ export FC=mpif90
 export F77=mpif77
 export F90=mpif90
 
-#Remove metis from cmake
-sed -i -e "s|set(PARMETIS_VER|#set(PARMETIS_VER|g" src/CMakeLists.txt
-sed -i -e "s|set(PARMETIS_DIR|#set(PARMETIS_DIR|g" src/CMakeLists.txt
-sed -i -e "s|add_subdirectory( \${PARMETIS_VER} )|#add_subdirectory( \${PARMETIS_VER} )|g" src/CMakeLists.txt
-
 # build and install schism
 mkdir build
 cd build
 
-cmake -DCMAKE_INSTALL_PREFIX=$PREFIX -DCMAKE_BUILD_TYPE="Release" \
+cmake \
+    -DCMAKE_INSTALL_PREFIX=$PREFIX \
+    -DCMAKE_BUILD_TYPE="Release" \
     -DCMAKE_Fortran_FLAGS_RELEASE_INIT="-O2 -ffree-line-length-none" \
+    -DBLD_STANDALONE=$BLD_STANDALONE \
     -DTVD_LIM=$TVD_LIM \
     -DOLDIO=$OLDIO \
     -DPREC_EVAP=$PREC_EVAP \
@@ -39,6 +37,7 @@ cmake -DCMAKE_INSTALL_PREFIX=$PREFIX -DCMAKE_BUILD_TYPE="Release" \
     -DUSE_FIB=$FIB \
     -DUSE_FABM=$FABM \
     -DUSE_SED=$SED \
+    -DNO_PARMETIS=$NO_PARMETIS \
     ../src
 
 make
@@ -46,7 +45,8 @@ make
 ##make install
 cp -r bin/* $PREFIX/bin/
 #make a symlink for convenience
-ln -s $PREFIX/bin/pschism_TVD-$TVD_LIM $PREFIX/bin/schism
+executable=$(find $PREFIX/bin/ -type f -name 'pschism*' -exec test -x {} \; -print)
+ln -s "${executable}" $PREFIX/bin/schism
 
 #clean up
 cd ..

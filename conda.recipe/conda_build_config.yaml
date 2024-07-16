@@ -3,6 +3,7 @@ python:
   - 3.9
   - 3.10
   - 3.11
+  - 3.12
 mpi:
   - openmpi  # [not win]
   - mpich  # [not win]
@@ -65,3 +66,6 @@ MARSH:
 SED:
 # - true
  - false
+NO_PARMETIS:
+#  - true
+  - false
