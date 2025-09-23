@@ -1083,7 +1083,7 @@
   
     <li class="md-nav__item">
       <a href="../../mesh-generation/meshing-for-compound-floods/extract-thalweg.html" class="md-nav__link">
-        Extract thalwegs
+        Extract thalwegs from DEM
       </a>
     </li>
   
@@ -1098,6 +1098,20 @@
     <li class="md-nav__item">
       <a href="../../mesh-generation/meshing-for-compound-floods/generate-river-map.html" class="md-nav__link">
         Generate river map
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../mesh-generation/meshing-for-compound-floods/special-case-utilizing-nhd.html" class="md-nav__link">
+        Special case utilizing NHD (National Hydrography Dataset)
       </a>
     </li>
   
@@ -1334,7 +1348,7 @@
   
     <li class="md-nav__item">
       <a href="../../modules/wwm.html" class="md-nav__link">
-        WWM
+        WWM (waves)
       </a>
     </li>
   
@@ -1377,6 +1391,34 @@
     <li class="md-nav__item">
       <a href="../../modules/single-class-ice.html" class="md-nav__link">
         Single-class ice module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/multi-class-ice.html" class="md-nav__link">
+        Multi-class ice module
+      </a>
+    </li>
+  
+
+            
+          
+            
+              
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../modules/pdaf.html" class="md-nav__link">
+        Data assimilation (PDAF)
       </a>
     </li>
   
@@ -1593,10 +1635,10 @@ vsource.th <br />
 vsink.th  <br />
 msource.th</p>
 <p>The python script to generate these files is as follows:
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="kn">from</span><span class="w"> </span><span class="nn">datetime</span><span class="w"> </span><span class="kn">import</span> <span class="n">datetime</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span> <span class="nn">pyschism.mesh</span> <span class="kn">import</span> <span class="n">Hgrid</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span> <span class="nn">pyschism.forcing.source_sink.nwm</span> <span class="kn">import</span> <span class="n">NationalWaterModel</span><span class="p">,</span> <span class="n">NWMElementPairings</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pyschism.mesh</span><span class="w"> </span><span class="kn">import</span> <span class="n">Hgrid</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="kn">from</span><span class="w"> </span><span class="nn">pyschism.forcing.source_sink.nwm</span><span class="w"> </span><span class="kn">import</span> <span class="n">NationalWaterModel</span><span class="p">,</span> <span class="n">NWMElementPairings</span>
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>    <span class="n">startdate</span> <span class="o">=</span> <span class="n">datetime</span><span class="p">(</span><span class="mi">2022</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">4</span><span class="p">)</span>
