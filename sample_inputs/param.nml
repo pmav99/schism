@@ -896,6 +896,8 @@
   iof_hydro(30) = 0 !S @prism centers [PSU] {salinityAtElement} 3D
   iof_hydro(31) = 0 !Barotropic pressure gradient force vector (m.s-2) @side centers  {pressure_gradient} 2D vector
   iof_hydro(32) = 0 !sediment termperature @elem [C] {sedTemperature} 2D 
+  iof_hydro(33) = 0 !surface water temperature [C] {sst} 2D
+  iof_hydro(34) = 0 !surface water salinity [PSU] {sss} 2D
 
 !-----------------------------------------------------------------------
 ! Outputs from optional modules. Only uncomment these if the USE_* is on

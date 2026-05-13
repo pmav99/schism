@@ -139,6 +139,9 @@ module schism_glbl
 
   ! Variables for global output files
   integer, parameter :: nbyte=4          !# bytes for output record size
+  integer,parameter :: n_hydro_2dnode_scalar_ids=14
+  integer,parameter :: hydro_2dnode_scalar_ids(n_hydro_2dnode_scalar_ids)= &
+     &(/1,2,3,4,5,6,7,8,9,10,11,12,33,34/)
 !  integer, parameter :: mnout=200        !max. # of output files
 !  integer, parameter :: mirec=1109000000 !max. record # to prevent output ~> 4GB
 !  character(len=11), parameter :: fileopenformat='unformatted'

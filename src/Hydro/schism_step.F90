@@ -9565,7 +9565,8 @@ real (rkind) :: aux                               ! ustar
           varout_2dnode(icount,:)=idry(1:np)
         enddo !i
 
-        do i=1,12 
+        do itmp=1,size(hydro_2dnode_scalar_ids)
+          i=hydro_2dnode_scalar_ids(itmp)
           if(iof_hydro(i)/=0) then
             icount=icount+1
             if(icount>ncount_2dnode) call parallel_abort('STEP: icount>nscribes(2)')
@@ -9594,9 +9595,13 @@ real (rkind) :: aux                               ! ustar
                 varout_2dnode(icount,:)=fluxevp(1:np)
               case(12)
                 varout_2dnode(icount,:)=fluxprc(1:np)
+              case(33)
+                varout_2dnode(icount,:)=tr_nd(1,nvrt,1:np)
+              case(34)
+                varout_2dnode(icount,:)=tr_nd(2,nvrt,1:np)
             end select
           endif !iof_hydro
-        enddo !i=1,12
+        enddo !itmp
 
         !2D node vectors
         do i=13,16

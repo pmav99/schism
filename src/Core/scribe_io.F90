@@ -1563,6 +1563,12 @@
         case ('salinity')
           standard_name = 'sea_water_salinity'
           units = 'g kg-1'
+        case ('sst')
+          standard_name = 'sea_water_temperature'
+          units = 'degree_C'
+        case ('sss')
+          standard_name = 'sea_water_salinity'
+          units = 'g kg-1'
         case ('diffusivity')
           standard_name = 'ocean_vertical_diffusivity'
           units = 'm2 s-1'

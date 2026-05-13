@@ -6396,7 +6396,8 @@
       out_name(1)='dryFlagNode'
       iout_23d(ncount_2dnode)=1
       !Scalar
-      do i=1,12
+      do itmp=1,size(hydro_2dnode_scalar_ids)
+        i=hydro_2dnode_scalar_ids(itmp)
         if(iof_hydro(i)/=0) then
           ncount_2dnode=ncount_2dnode+1
           iout_23d(ncount_2dnode)=1
@@ -6425,9 +6426,13 @@
               out_name(ncount_2dnode)='evaporationRate'
             case(12)
               out_name(ncount_2dnode)='precipitationRate'
+            case(33)
+              out_name(ncount_2dnode)='sst'
+            case(34)
+              out_name(ncount_2dnode)='sss'
           end select
         endif
-      enddo !i
+      enddo !itmp
       !Vectors count as 2
       do i=13,16
         if(iof_hydro(i)/=0) then
@@ -7330,4 +7335,3 @@ function signa3(x1,x2,x3,y1,y2,y3)
   signa3=((x1-x3)*(y2-y3)-(x2-x3)*(y1-y3))/2._rkind
   
 end function signa3
-
