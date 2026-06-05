@@ -1,1 +1,9 @@
-[{"version": "master", "title": "stable", "aliases": ["stable"]}]
+[
+  {
+    "version": "master",
+    "title": "stable",
+    "aliases": [
+      "stable"
+    ]
+  }
+]
