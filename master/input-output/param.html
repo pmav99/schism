@@ -1935,10 +1935,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#iloadtide0-int-loadtide_coef-double" class="md-nav__link">
+  <a href="#iloadtide0-int-loadtide_coef01-double-nstep_sal1-int" class="md-nav__link">
     <span class="md-ellipsis">
       
-        iloadtide=0 (int), loadtide_coef (double)
+        iloadtide=0 (int), loadtide_coef=0.1 (double), nstep_sal=1 (int)
       
     </span>
   </a>
@@ -3762,7 +3762,7 @@ the input for reference T,S is <code>surface_restore.nc</code>. The 2 ramp-down 
 </div>
 <h3 id="ihydraulics0-int">ihydraulics=0 (int)<a class="headerlink" href="#ihydraulics0-int" title="Permanent link">&para;</a></h3>
 <p>Hydraulic model option. If <span class="arithmatex">\(ihydraulics \neq 0\)</span>, <code>hydraulics.in</code> is required (cf. hydraulics user manual).</p>
-<h3 id="iloadtide0-int-loadtide_coef-double">iloadtide=0 (int), loadtide_coef (double)<a class="headerlink" href="#iloadtide0-int-loadtide_coef-double" title="Permanent link">&para;</a></h3>
+<h3 id="iloadtide0-int-loadtide_coef01-double-nstep_sal1-int">iloadtide=0 (int), loadtide_coef=0.1 (double), nstep_sal=1 (int)<a class="headerlink" href="#iloadtide0-int-loadtide_coef01-double-nstep_sal1-int" title="Permanent link">&para;</a></h3>
 <p>Option to specify Self Attraction and Loading (SAL) tide, usually used for basin- or global-scale applications. 
 If <code>iloadtide=0</code>, SAL is off. If <code>iloadtide=1</code>, the SAL input is interpolated values from a tide database,
  e.g., FES2014, given in <code>loadtide_[FREQ].gr3</code>, where <code>[FREQ]</code> are frequency names (shared with 
@@ -3774,7 +3774,12 @@ and phases (degrees behind GMT). In this option, SAL is
  SAL is applied everywhere and does not share parameters with tidal potential).
 If <code>iloadtide=2</code>, a simple scaling specified by <code>loadtide_coef</code> is used to reduce 
 the gravity. If <code>iloadtide=3</code>, the scaling is dependent on the local depth <em>a la</em> Stepanov &amp; Hughes (2004),
- with a maximum value of <code>loadtide_coef</code>.</p>
+ with a maximum value of <code>loadtide_coef</code>.
+If <code>iloadtide=4</code>, SAL is calculated using spherical harmonics on a global regular 1-degree
+longitude-latitude grid (360 x 181 points, including both poles).
+<code>nstep_sal</code> sets the calculation interval in time steps for this option. It must be at least 1 and
+defaults to 1. SAL is calculated on the first step after initialization, then every <code>nstep_sal</code>
+steps. The most recently calculated SAL field is used between calculations.</p>
 <h3 id="imm0-ibdef10-int">imm=0, ibdef=10 (int)<a class="headerlink" href="#imm0-ibdef10-int" title="Permanent link">&para;</a></h3>
 <p>Bed deformation option. Default: <code>0</code> (no bed deformation); <code>1</code>: with bed deformation (needs <code>ibdef</code> (# of steps during which deformation occurs), and <code>bdef.gr3</code>); 2: 3D bottom deformation (need to interact with code).</p>
 <h3 id="indvel0-int-ihorcon0-int-hvis_coef00025-double-ishapiro1-niter_shap1-int-shapiro005-double">indvel=0 (int), ihorcon=0 (int), hvis_coef0=0.025 (double), ishapiro=1, niter_shap=1 (int), shapiro0=0.5 (double)<a class="headerlink" href="#indvel0-int-ihorcon0-int-hvis_coef00025-double-ishapiro1-niter_shap1-int-shapiro005-double" title="Permanent link">&para;</a></h3>
