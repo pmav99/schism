@@ -188,7 +188,7 @@ Hot start flag. If `ihot=0`, cold start; if $ihot \neq 0$, hot start from `hotst
 Hydraulic model option. If $ihydraulics \neq 0$, `hydraulics.in` is required (cf. hydraulics user manual).
 
 
-### iloadtide=0 (int), loadtide_coef (double)
+### iloadtide=0 (int), loadtide_coef=0.1 (double), nstep_sal=1 (int)
 Option to specify Self Attraction and Loading (SAL) tide, usually used for basin- or global-scale applications. 
 If `iloadtide=0`, SAL is off. If `iloadtide=1`, the SAL input is interpolated values from a tide database,
  e.g., FES2014, given in `loadtide_[FREQ].gr3`, where `[FREQ]` are frequency names (shared with 
@@ -204,6 +204,9 @@ the gravity. If `iloadtide=3`, the scaling is dependent on the local depth _a la
  with a maximum value of `loadtide_coef`.
 If `iloadtide=4`, SAL is calculated using spherical harmonics on a global regular 1-degree
 longitude-latitude grid (360 x 181 points, including both poles).
+`nstep_sal` sets the calculation interval in time steps for this option. It must be at least 1 and
+defaults to 1. SAL is calculated on the first step after initialization, then every `nstep_sal`
+steps. The most recently calculated SAL field is used between calculations.
 
 ### imm=0, ibdef=10 (int)
 Bed deformation option. Default: `0` (no bed deformation); `1`: with bed deformation (needs `ibdef` (# of steps during which deformation occurs), and `bdef.gr3`); 2: 3D bottom deformation (need to interact with code).
